@@ -13,9 +13,9 @@ public class Comment {
 
     private String content;
 
-    private Integer praise;
+    private String praise;
 
-    private Integer oppose;
+    private String oppose;
 
     private Long createTime;
 
@@ -69,20 +69,20 @@ public class Comment {
         this.content = content == null ? null : content.trim();
     }
 
-    public Integer getPraise() {
+    public String getPraise() {
         return praise;
     }
 
-    public void setPraise(Integer praise) {
-        this.praise = praise;
+    public void setPraise(String praise) {
+        this.praise = praise == null ? null : praise.trim();
     }
 
-    public Integer getOppose() {
+    public String getOppose() {
         return oppose;
     }
 
-    public void setOppose(Integer oppose) {
-        this.oppose = oppose;
+    public void setOppose(String oppose) {
+        this.oppose = oppose == null ? null : oppose.trim();
     }
 
     public Long getCreateTime() {

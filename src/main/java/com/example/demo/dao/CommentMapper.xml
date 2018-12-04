@@ -8,8 +8,8 @@
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="praise" jdbcType="INTEGER" property="praise" />
-    <result column="oppose" jdbcType="INTEGER" property="oppose" />
+    <result column="praise" jdbcType="VARCHAR" property="praise" />
+    <result column="oppose" jdbcType="VARCHAR" property="oppose" />
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
     <result column="modify_time" jdbcType="BIGINT" property="modifyTime" />
   </resultMap>
@@ -40,7 +40,7 @@
       modify_time)
     values (#{id,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}, #{replyTo,jdbcType=INTEGER}, 
       #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
-      #{praise,jdbcType=INTEGER}, #{oppose,jdbcType=INTEGER}, #{createTime,jdbcType=BIGINT}, 
+      #{praise,jdbcType=VARCHAR}, #{oppose,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
       #{modifyTime,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.domain.Comment">
@@ -97,10 +97,10 @@
         #{content,jdbcType=VARCHAR},
       </if>
       <if test="praise != null">
-        #{praise,jdbcType=INTEGER},
+        #{praise,jdbcType=VARCHAR},
       </if>
       <if test="oppose != null">
-        #{oppose,jdbcType=INTEGER},
+        #{oppose,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=BIGINT},
@@ -129,10 +129,10 @@
         content = #{content,jdbcType=VARCHAR},
       </if>
       <if test="praise != null">
-        praise = #{praise,jdbcType=INTEGER},
+        praise = #{praise,jdbcType=VARCHAR},
       </if>
       <if test="oppose != null">
-        oppose = #{oppose,jdbcType=INTEGER},
+        oppose = #{oppose,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=BIGINT},
@@ -150,8 +150,8 @@
       user_id = #{userId,jdbcType=INTEGER},
       user_name = #{userName,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
-      praise = #{praise,jdbcType=INTEGER},
-      oppose = #{oppose,jdbcType=INTEGER},
+      praise = #{praise,jdbcType=VARCHAR},
+      oppose = #{oppose,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=BIGINT},
       modify_time = #{modifyTime,jdbcType=BIGINT}
     where id = #{id,jdbcType=INTEGER}
