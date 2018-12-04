@@ -5,11 +5,13 @@ import com.example.demo.domain.User;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.JWT;
 import com.example.demo.utils.ResponseData;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/user")
@@ -50,6 +52,14 @@ public class UserController {
             return responseData;
         }
         return ResponseData.customerError().putDataValue(ResponseData.ERRORS_KEY, new String[] { "用户名或者密码错误" });
+    }
+
+    @RequestMapping("/add")
+    @ResponseStatus(HttpStatus.OK)
+    public void toIndex(HttpServletRequest request, @RequestBody User user){
+        user.setCreateTime(new Date().getTime());
+        user.setUpdateTime(new Date().getTime());
+        userService.addUser(user);
     }
 
 }

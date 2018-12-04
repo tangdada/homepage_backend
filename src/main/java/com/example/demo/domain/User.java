@@ -7,6 +7,8 @@ public class User {
 
     private String password;
 
+    private Integer level;
+
     private String name;
 
     private String mobile;
@@ -37,6 +39,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public String getName() {

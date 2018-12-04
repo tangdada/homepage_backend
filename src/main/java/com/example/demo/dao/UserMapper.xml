@@ -5,13 +5,14 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="level" jdbcType="INTEGER" property="level" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="mobile" jdbcType="VARCHAR" property="mobile" />
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
     <result column="update_time" jdbcType="BIGINT" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_name, password, name, mobile, create_time, update_time
+    id, user_name, password, level, name, mobile, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -31,11 +32,11 @@
   </delete>
   <insert id="insert" parameterType="com.example.demo.domain.User">
     insert into tb_user (id, user_name, password, 
-      name, mobile, create_time, 
-      update_time)
+      level, name, mobile, 
+      create_time, update_time)
     values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
-      #{updateTime,jdbcType=BIGINT})
+      #{level,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.domain.User">
     insert into tb_user
@@ -48,6 +49,9 @@
       </if>
       <if test="password != null">
         password,
+      </if>
+      <if test="level != null">
+        level,
       </if>
       <if test="name != null">
         name,
@@ -72,6 +76,9 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
@@ -95,6 +102,9 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -114,6 +124,7 @@
     update tb_user
     set user_name = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=BIGINT},
