@@ -2,7 +2,7 @@ mybatis:
   mapper-locations: classpath:com.example.demo.dao/*.xml
   type-aliases-package: com.example.demo.dao
 
-#���ݿ����ӳ�
+# 数据库配置
 spring:
   datasource:
     username: root
