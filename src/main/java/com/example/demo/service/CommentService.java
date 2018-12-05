@@ -8,5 +8,7 @@ public interface CommentService {
 
     boolean addComment(Comment record);
 
+    boolean updateSelective(Comment record);
+
     List<Comment> getCommentByArticle(Integer articleId);
 }

@@ -26,6 +26,13 @@ public class CommentController {
         commentService.addComment(comment);
     }
 
+    @RequestMapping("/updateSelective")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateSelective(HttpServletRequest request, @RequestBody Comment comment){
+        comment.setModifyTime(new Date().getTime());
+        commentService.updateSelective(comment);
+    }
+
     @RequestMapping("/all")
     @ResponseBody
     public List<Comment> toIndex(HttpServletRequest request){

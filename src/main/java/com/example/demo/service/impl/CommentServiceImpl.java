@@ -20,6 +20,12 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public boolean updateSelective(Comment record) {
+        int res = dao.updateByPrimaryKeySelective(record);
+        return res > 0;
+    }
+
+    @Override
     public List<Comment> getCommentByArticle(Integer articleId) {
         return dao.selectByArticleId(articleId);
     }
